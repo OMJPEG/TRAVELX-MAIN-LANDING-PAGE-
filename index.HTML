@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TRAVELX OFFICAL WEBSITE </title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- AOS ANIMATION -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f5f5f5;
+      overflow-x: hidden;
+      transition: opacity 0.3s ease;
+      opacity: 1;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================== */
+
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.4s;
+    }
+
+    .navbar.scrolled {
+      background: #06152c;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .logo {
+      color: white;
+      font-size: 38px;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 17px;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      width: 0;
+      height: 2px;
+      background: #ffb400;
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .call-btn {
+      background: #ff5a5f;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO SECTION
+    ========================== */
+
+    .hero {
+      width: 100%;
+      height: 100vh;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600') center/cover no-repeat;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: absolute;
+      top: 50%;
+      left: 8%;
+      transform: translateY(-50%);
+      color: white;
+      z-index: 2;
+    }
+
+    .hero-content h1 {
+      font-size: 72px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      max-width: 700px;
+      animation: slideUp 1s ease;
+    }
+
+    .hero-content p {
+      font-size: 22px;
+      margin-bottom: 30px;
+      animation: slideUp 1.3s ease;
+    }
+
+    .hero-btn {
+      padding: 18px 40px;
+      border: none;
+      border-radius: 50px;
+      background: #ff5a5f;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.4s;
+      animation: slideUp 1.5s ease;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-5px);
+      background: #ff3137;
+    }
+
+    /* FLOATING CIRCLE IMAGE */
+
+    .floating-card {
+      position: absolute;
+      right: 7%;
+      top: 55%;
+      transform: translateY(-50%);
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 12px solid rgba(255, 255, 255, 0.2);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* WAVE */
+
+    .wave {
+      position: absolute;
+      width: 100%;
+      bottom: -5px;
+      left: 0;
+    }
+
+    /* SEARCH BAR */
+
+    .search-wrapper {
+      width: 100%;
+      margin-top: -80px;
+      position: relative;
+      z-index: 5;
+      padding: 0 8%;
+    }
+
+    .search-box {
+      background: white;
+      border-radius: 25px;
+      padding: 30px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .search-item {
+      flex: 1;
+    }
+
+    .search-item label {
+      display: block;
+      margin-bottom: 8px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    .search-item input,
+    .search-item select {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: #f2f2f2;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    .search-btn {
+      background: #071c3a;
+      color: white;
+      padding: 18px 40px;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* =========================
+       DESTINATIONS
+    ========================== */
+
+    section#contactSection {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 48px;
+      color: #06152c;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #777;
+    }
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .destination-card {
+      position: relative;
+      height: 420px;
+      border-radius: 25px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .destination-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.7s;
+    }
+
+    .destination-card:hover img {
+      transform: scale(1.15);
+    }
+
+    .destination-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+          rgba(0, 0, 0, 0.8),
+          rgba(0, 0, 0, 0.1));
+      display: flex;
+      align-items: flex-end;
+      padding: 30px;
+    }
+
+    .destination-overlay h3 {
+      color: white;
+      font-size: 30px;
+    }
+
+
+    /* =========================
+       PACKAGES
+    ========================== */
+
+    .packages {
+      background: #f9fbff;
+    }
+
+    .package-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .package-card {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      transition: 0.4s;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .package-card:hover {
+      transform: translateY(-15px);
+    }
+
+    .package-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .package-content {
+      padding: 25px;
+    }
+
+    .package-content h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      color: #ff5a5f;
+      font-size: 30px;
+      font-weight: 700;
+      margin: 15px 0;
+    }
+
+    .book-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: #06152c;
+      color: white;
+      border-radius: 50px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       TESTIMONIAL
+    ========================== */
+
+    .testimonial {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600') center/cover fixed;
+
+      color: white;
+      text-align: center;
+    }
+
+    .testimonial-box {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .testimonial-box p {
+      font-size: 24px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .contact-form {
+      background: white;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 18px;
+      margin-bottom: 20px;
+      border: none;
+      background: #f2f2f2;
+      border-radius: 12px;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 18px;
+      border: none;
+      background: #ff5a5f;
+      color: white;
+      border-radius: 50px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       WHATSAPP
+    ========================== */
+
+    .whatsapp {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 35px;
+      z-index: 999;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      background: #06152c;
+      color: white;
+      text-align: center;
+      padding: 25px;
+    }
+
+    /* =========================
+       ANIMATIONS
+    ========================== */
+
+    @keyframes float {
+      0% {
+        transform: translateY(-50%) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-55%) translateX(-10px);
+      }
+
+      100% {
+        transform: translateY(-50%) translateX(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(80px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+
+      70% {
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width:991px) {
+
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: #06152c;
+        flex-direction: column;
+        padding: 50px;
+        transition: 0.4s;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .floating-card {
+        display: none;
+      }
+
+      .hero-content h1 {
+        font-size: 48px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav class="navbar">
+
+    <div class="logo">TravelX</div>
+
+    <ul class="nav-links">
+
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Tours</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Packages</a></li>
+      <li><a href="#">About Us </a></li>
+      <li><a href="contactpage.html" id="contactLink">Contact</a></li>
+
+
+    </ul>
+
+    <a href="#" class="call-btn">
+      <i class="fa fa-phone"></i>
+      +91 84520 57759
+    </a>
+
+    <div class="menu-btn">
+      <i class="fa fa-bars"></i>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h1>
+        Discover Beautiful Places Around The World
+      </h1>
+
+      <p>
+        Luxury travel experiences with unforgettable memories.
+      </p>
+
+      <button class="hero-btn">
+        Explore Now
+      </button>
+
+    </div>
+
+    <div class="floating-card">
+      <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?q=80&w=1200">
+    </div>
+
+    <svg class="wave" viewBox="0 0 1440 320">
+      <path fill="#ffffff" fill-opacity="1"
+        d="M0,224L80,208C160,192,320,160,480,170.7C640,181,800,235,960,240C1120,245,1280,203,1360,181.3L1440,160L1440,320L0,320Z">
+      </path>
+    </svg>
+
+  </section>
+
+  <!-- SEARCH -->
+
+  <div class="search-wrapper">
+
+    <div class="search-box">
+
+      <div class="search-item">
+        <label>Destination</label>
+        <select>
+          <option>Choose Destination</option>
+          <option>BALI</option>
+          <option>DUBAI</option>
+          <option>THAILAND</option>
+          <option>MALDIVES </option>
+            <option>PARIS </option>
+         <option>SWIZTERLAND</option>
+           <option>OTHER  </option>
+        </select>
+      </div>
+
+      <div class="search-item">
+        <label>Date</label>
+        <input type="date">
+      </div>
+
+      <div class="search-item">
+        <label>Guests</label>
+        <input type="number" placeholder="2">
+      </div>
+
+      <button class="search-btn">
+        Search
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- DESTINATIONS -->
+
+  <section>
+
+    <div class="section-title" data-aos="fade-up">
+
+      <h2>Popular Destinations</h2>
+
+      <p>Choose your dream place</p>
+
+    </div>
+
+    <div class="destination-grid">
+
+      <div class="destination-card" data-aos="zoom-in">
+
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200">
+
+        <div class="destination-overlay">
+          <h3>Maldives</h3>
+        </div>
+
+      </div>
+
+      <div class="destination-card" data-aos="zoom-in">
+
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200">
+
+        <div class="destination-overlay">
+          <h3>Paris</h3>
+        </div>
+
+      </div>
+
+      <div class="destination-card" data-aos="zoom-in">
+
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200">
+
+        <div class="destination-overlay">
+          <h3>Bali</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+  <!-- PACKAGES -->
+
+  <section class="packages">
+
+    <div class="section-title" data-aos="fade-up">
+
+      <h2>Best Tour Packages</h2>
+
+      <p>Affordable luxury vacations</p>
+
+    </div>
+
+    <div class="package-container">
+
+      <div class="package-card" data-aos="fade-up">
+
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?q=80&w=1200">
+
+        <div class="package-content">
+
+          <h3>Dubai Tour</h3>
+
+          <p>5 Days / 4 Nights</p>
+
+          <div class="price">₹49,999</div>
+
+          <button class="book-btn">
+            Book Now
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="package-card" data-aos="fade-up">
+
+        <img src="https://images.unsplash.com/photo-1526772662000-3f88f10405ff?q=80&w=1200">
+
+        <div class="package-content">
+
+          <h3>Switzerland</h3>
+
+          <p>7 Days / 6 Nights</p>
+
+          <div class="price">₹1,20,000</div>
+
+          <button class="book-btn">
+            Book Now
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="package-card" data-aos="fade-up">
+
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1200">
+
+        <div class="package-content">
+
+          <h3>Thailand</h3>
+
+          <p>4 Days / 3 Nights</p>
+
+          <div class="price">₹39,999</div>
+
+          <button class="book-btn">
+            Book Now
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TESTIMONIAL -->
+
+  <section class="testimonial">
+
+    <div class="testimonial-box" data-aos="fade-up">
+
+      <h2>What Our Travelers Say</h2>
+
+      <br>
+
+      <p>
+        "Absolutely amazing experience. Everything was perfectly organized and luxurious!"
+      </p>
+
+      <h3>- Sarvesh Salekar </h3>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contactSection">
+
+    <div class="contact-wrapper">
+
+      <div data-aos="fade-right">
+
+        <h2 style="font-size:50px;margin-bottom:20px;">
+          Plan Your Dream Trip
+        </h2>
+
+        <p style="color:#666;font-size:18px;">
+          Contact our travel experts today and get exclusive travel deals.
+        </p>
+
+      </div>
+
+      <div class="contact-form" data-aos="fade-left">
+
+        <input type="text" placeholder="Your Name">
+
+        <input type="email" placeholder="Your Email">
+
+        <input type="tel" placeholder="Phone Number">
+
+        <textarea rows="5" placeholder="Your Message"></textarea>
+
+        <button>
+          Send Enquiry
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- WHATSAPP -->
+
+  <a href="#" class="whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 TravelX. All Rights Reserved.
+  </footer>
+
+  <!-- AOS -->
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+
+    AOS.init({
+      duration: 1200,
+    });
+
+    // NAVBAR SCROLL EFFECT
+
+    window.addEventListener('scroll', function () {
+
+      const navbar =
+        document.querySelector('.navbar');
+
+      navbar.classList.toggle(
+        'scrolled',
+        window.scrollY > 50
+      );
+
+    });
+
+    // MOBILE MENU
+
+    const menuBtn =
+      document.querySelector('.menu-btn');
+
+    const navLinks =
+      document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+
+      navLinks.classList.toggle('active');
+
+    });
+
+    // Smooth navigation to contact page
+    document.getElementById('contactLink').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      // Wait for transition to complete then navigate
+      setTimeout(function () {
+        window.location.href = 'contactpage.html';
+      }, 400); // match transition duration
+    });
+  </script>
+
+</body>
+
+</html>
