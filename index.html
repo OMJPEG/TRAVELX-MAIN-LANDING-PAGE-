@@ -5,15 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TRAVELX OFFICIAL WEBSITE</title>
+  <title>TRAVELX OFFICAL WEBSITE </title>
 
-  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- AOS ANIMATION -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
@@ -37,7 +34,7 @@
     }
 
     /* =========================
-       NAVBAR
+        NAVBAR
     ========================== */
 
     .navbar {
@@ -109,7 +106,7 @@
     }
 
     /* =========================
-       HERO SECTION
+        HERO SECTION
     ========================== */
 
     .hero {
@@ -246,7 +243,7 @@
     }
 
     /* =========================
-       DESTINATIONS
+        DESTINATIONS
     ========================== */
 
     section#contactSection {
@@ -311,7 +308,7 @@
 
 
     /* =========================
-       PACKAGES
+        PACKAGES
     ========================== */
 
     .packages {
@@ -370,7 +367,7 @@
     }
 
     /* =========================
-       TESTIMONIAL
+        TESTIMONIAL
     ========================== */
 
     .testimonial {
@@ -395,7 +392,7 @@
     }
 
     /* =========================
-       CONTACT
+        CONTACT
     ========================== */
 
     .contact-wrapper {
@@ -434,7 +431,7 @@
     }
 
     /* =========================
-       WHATSAPP
+        WHATSAPP
     ========================== */
 
     .whatsapp {
@@ -456,7 +453,7 @@
     }
 
     /* =========================
-       FOOTER
+        FOOTER
     ========================== */
 
     footer {
@@ -467,7 +464,7 @@
     }
 
     /* =========================
-       ANIMATIONS
+        ANIMATIONS
     ========================== */
 
     @keyframes float {
@@ -511,7 +508,7 @@
     }
 
     /* =========================
-       RESPONSIVE
+        RESPONSIVE
     ========================== */
 
     @media(max-width:991px) {
@@ -558,8 +555,6 @@
 
 <body>
 
-  <!-- NAVBAR -->
-
   <nav class="navbar">
 
     <div class="logo">TravelX</div>
@@ -583,8 +578,6 @@
     </div>
 
   </nav>
-
-  <!-- HERO -->
 
   <section class="hero">
 
@@ -615,8 +608,6 @@
     </svg>
 
   </section>
-
-  <!-- SEARCH -->
 
   <div class="search-wrapper">
 
@@ -653,8 +644,6 @@
     </div>
 
   </div>
-
-  <!-- DESTINATIONS -->
 
   <section>
 
@@ -702,8 +691,6 @@
 
 
   </section>
-
-  <!-- PACKAGES -->
 
   <section class="packages">
 
@@ -781,8 +768,6 @@
 
   </section>
 
-  <!-- TESTIMONIAL -->
-
   <section class="testimonial">
 
     <div class="testimonial-box" data-aos="fade-up">
@@ -800,8 +785,6 @@
     </div>
 
   </section>
-
-  <!-- CONTACT -->
 
   <section id="contactSection">
 
@@ -839,19 +822,13 @@
 
   </section>
 
-  <!-- WHATSAPP -->
-
   <a href="#" class="whatsapp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- FOOTER -->
-
   <footer>
     © 2026 TravelX. All Rights Reserved.
   </footer>
-
-  <!-- AOS -->
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
@@ -890,28 +867,22 @@
     });
 
     // Smooth navigation to About Us page
-    const aboutLink = document.getElementById('aboutPageLink');
-    if (aboutLink) {
-      aboutLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.body.classList.add('fade-out');
-        setTimeout(function () {
-          window.location.href = 'aboutpage.html';
-        }, 400);
-      });
-    }
+    document.getElementById('aboutPageLink').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(function () {
+        window.location.href = 'aboutpage.html';
+      }, 400);
+    });
 
     // Smooth navigation to Contact page
-    const contactLink = document.getElementById('contactPageLink');
-    if (contactLink) {
-      contactLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.body.classList.add('fade-out');
-        setTimeout(function () {
-          window.location.href = 'contactpage.html';
-        }, 400);
-      });
-    }
+    document.getElementById('contactPageLink').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
+      setTimeout(function () {
+        window.location.href = 'contactpage.html';
+      }, 400);
+    });
 
   </script>
 
