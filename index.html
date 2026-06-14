@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>TRAVELX OFFICAL WEBSITE </title>
+  <title>TRAVELX OFFICIAL WEBSITE</title>
 
   <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -565,15 +565,12 @@
     <div class="logo">TravelX</div>
 
     <ul class="nav-links">
-
       <li><a href="index.html">Home</a></li>
       <li><a href="#contactSection">Tours</a></li>
       <li><a href="#contactSection">Destinations</a></li>
       <li><a href="#contactSection">Packages</a></li>
       <li><a href="aboutpage.html" id="aboutPageLink">About Us</a></li>
       <li><a href="contactpage.html" id="contactPageLink">Contact</a></li>
-    </ul>
-
     </ul>
 
     <a href="#" class="call-btn">
@@ -893,22 +890,28 @@
     });
 
     // Smooth navigation to About Us page
-    document.getElementById('aboutPageLink').addEventListener('click', function (e) {
-      e.preventDefault();
-      document.body.classList.add('fade-out');
-      setTimeout(function () {
-        window.location.href = 'aboutpage.html';
-      }, 400);
-    });
+    const aboutLink = document.getElementById('aboutPageLink');
+    if (aboutLink) {
+      aboutLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(function () {
+          window.location.href = 'aboutpage.html';
+        }, 400);
+      });
+    }
 
     // Smooth navigation to Contact page
-    document.getElementById('contactPageLink').addEventListener('click', function (e) {
-      e.preventDefault();
-      document.body.classList.add('fade-out');
-      setTimeout(function () {
-        window.location.href = 'contactpage.html';
-      }, 400);
-    });
+    const contactLink = document.getElementById('contactPageLink');
+    if (contactLink) {
+      contactLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(function () {
+          window.location.href = 'contactpage.html';
+        }, 400);
+      });
+    }
 
   </script>
 
