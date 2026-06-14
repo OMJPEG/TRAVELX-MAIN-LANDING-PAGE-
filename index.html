@@ -566,14 +566,13 @@
 
     <ul class="nav-links">
 
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Tours</a></li>
-      <li><a href="#">Destinations</a></li>
-      <li><a href="#">Packages</a></li>
-      <li><a href="#">About Us </a></li>
-      <li><a href="ABOUTPAGE.html" id="contactLink">About Us</a></li>
-      <li><a href="contactpage.html" id="contactLink">Contact</a></li>
-
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#contactSection">Tours</a></li>
+      <li><a href="#contactSection">Destinations</a></li>
+      <li><a href="#contactSection">Packages</a></li>
+      <li><a href="aboutpage.html" id="aboutPageLink">About Us</a></li>
+      <li><a href="contactpage.html" id="contactPageLink">Contact</a></li>
+    </ul>
 
     </ul>
 
@@ -634,9 +633,9 @@
           <option>DUBAI</option>
           <option>THAILAND</option>
           <option>MALDIVES </option>
-            <option>PARIS </option>
-         <option>SWIZTERLAND</option>
-           <option>OTHER  </option>
+          <option>PARIS </option>
+          <option>SWIZTERLAND</option>
+          <option>OTHER </option>
         </select>
       </div>
 
@@ -893,15 +892,24 @@
 
     });
 
-    // Smooth navigation to contact page
-    document.getElementById('contactLink').addEventListener('click', function (e) {
+    // Smooth navigation to About Us page
+    document.getElementById('aboutPageLink').addEventListener('click', function (e) {
       e.preventDefault();
       document.body.classList.add('fade-out');
-      // Wait for transition to complete then navigate
+      setTimeout(function () {
+        window.location.href = 'aboutpage.html';
+      }, 400);
+    });
+
+    // Smooth navigation to Contact page
+    document.getElementById('contactPageLink').addEventListener('click', function (e) {
+      e.preventDefault();
+      document.body.classList.add('fade-out');
       setTimeout(function () {
         window.location.href = 'contactpage.html';
-      }, 400); // match transition duration
+      }, 400);
     });
+
   </script>
 
 </body>
