@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Us | TravelX Tours & Travels</title>
+
+  <!-- GOOGLE FONT -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- AOS ANIMATION -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #334155;
+      overflow-x: hidden;
+      transition: opacity 0.4s ease;
+      opacity: 1;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    /* =========================
+        NAVBAR (Matching System)
+    ========================== */
+
+    .navbar {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.4s;
+    }
+
+    .navbar.scrolled {
+      background: #06152c;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      padding: 15px 8%;
+    }
+
+    .logo {
+      color: white;
+      font-size: 38px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 17px;
+      position: relative;
+      font-weight: 400;
+      transition: 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      width: 0;
+      height: 2px;
+      background: #ffb400;
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .call-btn {
+      background: #ff5a5f;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
+    }
+
+    .call-btn:hover {
+      background: #ff3137;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 90, 95, 0.4);
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* =========================
+        HERO SECTION (Fixing image_a25638.jpg overlapping layout bug)
+    ========================== */
+
+    .about-hero {
+      width: 100%;
+      height: 70vh;
+      background: linear-gradient(rgba(4, 15, 33, 0.65), rgba(6, 21, 44, 0.85)),
+                  url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1600') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      /* Replaced overlapping absolute SVG waves with modern CSS clip-path dynamics */
+      clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
+    }
+
+    .about-hero-content {
+      color: white;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .about-hero-content h1 {
+      font-size: 64px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      font-weight: 700;
+      animation: slideUp 1s ease;
+    }
+
+    .about-hero-content p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      animation: slideUp 1.3s ease;
+    }
+
+    .about-hero-btn {
+      padding: 18px 40px;
+      border: none;
+      border-radius: 50px;
+      background: #ff5a5f;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.4s;
+      box-shadow: 0 4px 15px rgba(255, 90, 95, 0.3);
+      animation: slideUp 1.5s ease;
+    }
+
+    .about-hero-btn:hover {
+      transform: translateY(-5px);
+      background: #ff3137;
+      box-shadow: 0 8px 25px rgba(255, 90, 95, 0.5);
+    }
+
+    /* =========================
+        SHARED SECTION STYLING
+    ========================== */
+
+    section {
+      padding: 100px 8%;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px auto;
+    }
+
+    .section-header span {
+      text-transform: uppercase;
+      color: #ff5a5f;
+      font-weight: 600;
+      letter-spacing: 2px;
+      font-size: 14px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      color: #06152c;
+      font-weight: 700;
+    }
+
+    .section-header p {
+      color: #64748b;
+      margin-top: 15px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+        ABOUT TRAVELX
+    ========================== */
+
+    .about-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-intro-text h3 {
+      font-size: 32px;
+      color: #06152c;
+      margin-bottom: 20px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .about-intro-text p {
+      color: #475569;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .about-intro-features {
+      list-style: none;
+    }
+
+    .about-intro-features li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #1e293b;
+      font-weight: 500;
+    }
+
+    .about-intro-features i {
+      color: #ffb400;
+      font-size: 20px;
+    }
+
+    .about-intro-images {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+    }
+
+    .img-stack {
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      transition: transform 0.4s ease;
+    }
+
+    .img-stack:hover {
+      transform: translateY(-5px);
+    }
+
+    .img-stack-1 {
+      grid-column: 1 / span 8;
+      grid-row: 1;
+      z-index: 2;
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border: 8px solid white;
+    }
+
+    .img-stack-2 {
+      grid-column: 5 / -1;
+      grid-row: 1;
+      z-index: 1;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transform: translateY(60px);
+      border: 8px solid white;
+    }
+
+    /* =========================
+        MISSION & VISION
+    ========================== */
+
+    .mv-section {
+      background: linear-gradient(135deg, #06152c 0%, #0c254b 100%);
+      color: white;
+      overflow: hidden;
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .mv-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 50px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      transition: all 0.4s ease;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    }
+
+    .mv-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 90, 95, 0.4);
+    }
+
+    .mv-icon {
+      width: 70px;
+      height: 70px;
+      background: #ff5a5f;
+      border-radius: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(255, 90, 95, 0.3);
+    }
+
+    .mv-card h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .mv-card p {
+      color: #94a3b8;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+        WHY CHOOSE US (6 CARDS)
+    ========================== */
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 40px 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      transition: all 0.4s ease;
+      border: 1px solid #f1f5f9;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(6, 21, 44, 0.08);
+      border-color: #e2e8f0;
+    }
+
+    .feature-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      background: rgba(255, 90, 95, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 25px;
+      transition: 0.3s;
+    }
+
+    .feature-card:hover .feature-icon-wrapper {
+      background: #ff5a5f;
+    }
+
+    .feature-icon-wrapper i {
+      font-size: 24px;
+      color: #ff5a5f;
+      transition: 0.3s;
+    }
+
+    .feature-card:hover .feature-icon-wrapper i {
+      color: white;
+    }
+
+    .feature-card h3 {
+      font-size: 20px;
+      color: #06152c;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      color: #64748b;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+        CORE VALUES
+    ========================== */
+
+    .values-section {
+      background: #06152c;
+    }
+
+    .values-section .section-header h2 {
+      color: white;
+    }
+
+    .values-section .section-header p {
+      color: #94a3b8;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .value-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 35px 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .value-card:hover {
+      background: rgba(255,255,255,0.06);
+      transform: scale(1.03);
+      border-color: rgba(255, 180, 0, 0.4);
+    }
+
+    .value-icon {
+      font-size: 32px;
+      color: #ffb400;
+      margin-bottom: 20px;
+    }
+
+    .value-card h4 {
+      color: white;
+      font-size: 19px;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .value-card p {
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+        JOURNEY EXPERIENCE
+    ========================== */
+
+    .journey-section {
+      background: white;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .journey-image-container {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+      height: 480px;
+    }
+
+    .journey-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .journey-image-container:hover img {
+      transform: scale(1.05);
+    }
+
+    .journey-overlay-tag {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      background: rgba(6, 21, 44, 0.9);
+      padding: 20px 30px;
+      border-radius: 15px;
+      color: white;
+      border-left: 5px solid #ff5a5f;
+    }
+
+    .journey-overlay-tag h4 {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .journey-overlay-tag p {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .journey-content h3 {
+      font-size: 36px;
+      color: #06152c;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .journey-content p {
+      color: #475569;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .journey-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+    }
+
+    .timeline-number {
+      width: 45px;
+      height: 45px;
+      background: #06152c;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      flex-shrink: 0;
+      border: 3px solid rgba(255, 90, 95, 0.2);
+    }
+
+    .timeline-details h5 {
+      font-size: 18px;
+      color: #06152c;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .timeline-details p {
+      font-size: 14px;
+      color: #64748b;
+      margin: 0;
+    }
+
+    /* =========================
+        CALL TO ACTION (CTA)
+    ========================== */
+
+    .cta-section {
+      background: linear-gradient(rgba(6, 21, 44, 0.85), rgba(6, 21, 44, 0.95)),
+                  url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1600') center/cover fixed;
+      text-align: center;
+      padding: 120px 8%;
+      color: white;
+    }
+
+    .cta-content {
+      max-width: 750px;
+      margin: 0 auto;
+    }
+
+    .cta-content h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .cta-content p {
+      font-size: 19px;
+      color: #cbd5e1;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .cta-btn {
+      padding: 18px 45px;
+      background: #ff5a5f;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 20px rgba(255, 90, 95, 0.4);
+    }
+
+    .cta-btn:hover {
+      background: #ff3137;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 90, 95, 0.5);
+    }
+
+    /* =========================
+        WHATSAPP
+    ========================== */
+
+    .whatsapp {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 35px;
+      z-index: 999;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    /* =========================
+        FOOTER
+    ========================== */
+
+    footer {
+      background: #06152c;
+      color: white;
+      text-align: center;
+      padding: 40px 25px;
+      font-size: 15px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* =========================
+        ANIMATIONS
+    ========================== */
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(60px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* =========================
+        RESPONSIVE DESIGN
+    ========================== */
+
+    @media(max-width:991px) {
+      .navbar {
+        padding: 20px 5%;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: #06152c;
+        flex-direction: column;
+        padding: 50px;
+        transition: 0.4s;
+        gap: 30px;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .about-hero {
+        height: 65vh;
+        padding: 0 5%;
+      }
+
+      .about-hero-content h1 {
+        font-size: 44px;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+
+      .about-intro-grid, 
+      .mv-grid, 
+      .journey-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .img-stack-2 {
+        transform: translateY(30px);
+      }
+      
+      .about-intro-images {
+        margin-bottom: 40px;
+      }
+
+      .cta-content h2 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .about-hero-content h1 {
+        font-size: 36px;
+      }
+      .section-header h2 {
+        font-size: 30px;
+      }
+      .img-stack-1 {
+        height: 260px;
+      }
+      .img-stack-2 {
+        height: 180px;
+      }
+      .call-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="logo aboutPageLink">TravelX</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="aboutPageLink">Home</a></li>
+      <li><a href="tours.html" class="aboutPageLink">Tours</a></li>
+      <li><a href="destinations.html" class="aboutPageLink">Destinations</a></li>
+      <li><a href="packages.html" class="aboutPageLink">Packages</a></li>
+      <!-- Redirection trigger for smooth About context interactions -->
+      <li><a href="ABOUTPAGE.html" class="active aboutPageLink">About</a></li>
+      <li><a href="contactpage.html" id="contactLink">Contact</a></li>
+    </ul>
+
+    <a href="tel:+918452057759" class="call-btn">
+      <i class="fa fa-phone"></i> +91 84520 57759
+    </a>
+
+    <div class="menu-btn">
+      <i class="fa fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <h1>Our Journey & Passion For Travel</h1>
+      <p>Bringing you closer to exceptional destinations, seamless logistics, and authentic travel opportunities designed around your comfort.</p>
+      <button class="about-hero-btn" onclick="document.getElementById('about-intro').scrollIntoView();">Learn More</button>
+    </div>
+  </section>
+
+  <!-- ABOUT TRAVELX SECTION -->
+  <section id="about-intro">
+    <div class="about-intro-grid">
+      <div class="about-intro-text" data-aos="fade-right">
+        <div class="section-header" style="text-align: left; margin-bottom: 25px;">
+          <span>Who We Are</span>
+          <h2>Redefining Modern Hospitality & Tours</h2>
+        </div>
+        <p>At TravelX, we believe travel has the power to transform perspectives, connect cultures, and create lifelong milestones. We operate as a dedicated modern travel platform focused on bridging the gap between complicated planning and highly customized travel executions.</p>
+        <p>Whether you're exploring serene shorelines or historical city landscapes, our structural frameworks prioritize customer satisfaction, safety protocols, and robust localized assistance to deliver worry-free modern adventures.</p>
+        <ul class="about-intro-features">
+          <li><i class="fa-solid fa-circle-check"></i> Structured Global Travel Network</li>
+          <li><i class="fa-solid fa-circle-check"></i> Scalable Custom Iterations Per Client</li>
+          <li><i class="fa-solid fa-circle-check"></i> Complete End-to-End Logistical Execution</li>
+        </ul>
+      </div>
+      <div class="about-intro-images" data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=800" alt="Travel scenery" class="img-stack img-stack-1">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=800" alt="Travel mapping" class="img-stack img-stack-2">
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION & VISION SECTION -->
+  <section class="mv-section">
+    <div class="mv-grid">
+      <div class="mv-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="mv-icon"><i class="fa-solid fa-bullseye"></i></div>
+        <h3>Our Mission</h3>
+        <p>To eliminate operational complexities within the travel industry by provisioning thoroughly mapped itineraries, exceptional localized guidance, and scalable value propositions that enable customers to explore global landscapes with profound peace of mind.</p>
+      </div>
+      <div class="mv-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="mv-icon"><i class="fa-solid fa-eye"></i></div>
+        <h3>Our Vision</h3>
+        <p>To establish a highly recognized, digitally advanced travel framework known for transparency, structural reliability, and sustainable community tour operations that transform traditional sightseeing into deeply immersive, lifestyle journeys.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE TRAVELX (6 CARDS) -->
+  <section class="features-section">
+    <div class="section-header" data-aos="fade-up">
+      <span>Key Advantages</span>
+      <h2>Why Choose TravelX</h2>
+      <p>We combine modern technological systems with personalized planning metrics to secure industry-leading travel parameters for our global clientele.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="feature-icon-wrapper"><i class="fa-solid fa-sliders"></i></div>
+        <h3>Customized Travel Planning</h3>
+        <p>Tailored structural paths adjusted precisely to individual timelines, specific choices, and targeted leisure pacing preferences.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon-wrapper"><i class="fa-solid fa-wallet"></i></div>
+        <h3>Budget-Friendly Packages</h3>
+        <p>Strategic premium pairings and optimized configurations that provide competitive pricing parameters without degrading luxury value.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="feature-icon-wrapper"><i class="fa-solid fa-headset"></i></div>
+        <h3>Trusted Assistance</h3>
+        <p>Continuous monitoring structures and readily accessible touchpoints to support you seamlessly across various international time zones.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+        <h3>Seamless Booking Process</h3>
+        <p>An intuitive interface layout designed to eliminate operational friction, enabling faster execution from initial inquiry to ticket generation.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="feature-icon-wrapper"><i class="fa-solid fa-map-pin"></i></div>
+        <h3>Handpicked Destinations</h3>
+        <p>Vetted itineraries across cultural centers and scenic locales, specifically evaluated for absolute safety and aesthetic richness.</p>
+      </div>
+      <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-icon-wrapper"><i class="fa-solid fa-face-smile"></i></div>
+        <h3>Customer-Focused Experience</h3>
+        <p>Our core operational metric places your direct comfort and personal expectations at the apex of our architectural design decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR CORE VALUES SECTION -->
+  <section class="values-section">
+    <div class="section-header" data-aos="fade-up">
+      <span>Foundational Pillars</span>
+      <h2>Our Core Values</h2>
+      <p>The philosophical ideals governing our daily activities and guiding how we structure institutional processes.</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="50">
+        <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4>Trust</h4>
+        <p>Fostering verifiable relationships through programmatic performance reliability and verified itinerary mapping.</p>
+      </div>
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="value-icon"><i class="fa-solid fa-chart-pie"></i></div>
+        <h4>Transparency</h4>
+        <p>Uncompromising integrity parameters regarding hidden fees, itemized logistics, and clear company expectations.</p>
+      </div>
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="150">
+        <div class="value-icon"><i class="fa-solid fa-circle-check"></i></div>
+        <h4>Reliability</h4>
+        <p>Delivering on scheduled commitments consistently with backup organizational pathways established proactively.</p>
+      </div>
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+        <h4>Innovation</h4>
+        <p>Continually upgrading booking architectures and experiential offerings using modern programmatic data matrices.</p>
+      </div>
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="250">
+        <div class="value-icon"><i class="fa-solid fa-award"></i></div>
+        <h4>Excellence</h4>
+        <p>Striving for the upper echelons of client feedback loops by maintaining distinct premium service standards.</p>
+      </div>
+      <div class="value-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="value-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+        <h4>Customer Commitment</h4>
+        <p>Devoting logistical capital towards matching user criteria to concrete travel realities meticulously.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY EXPERIENCE SECTION -->
+  <section class="journey-section">
+    <div class="journey-grid">
+      <div class="journey-image-container" data-aos="fade-right">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200" alt="Mountain road journey">
+        <div class="journey-overlay-tag">
+          <h4>Setting Benchmarks</h4>
+          <p>Every itinerary is verified by field experts.</p>
+        </div>
+      </div>
+      <div class="journey-content" data-aos="fade-left">
+        <h3>How We Elevate Your Entire Journey Architecture</h3>
+        <p>We recognize that a vacation isn't isolated to arrival days; the journey starts the instant you initialize a search query. TravelX structures customized workflows behind the scenes, consolidating vendor verification, real-time tracking systems, and accommodation logistics into an integrated itinerary layout.</p>
+        
+        <div class="journey-timeline">
+          <div class="timeline-item">
+            <div class="timeline-number">1</div>
+            <div class="timeline-details">
+              <h5>Requirement Gathering</h5>
+              <p>We dynamically sort and interpret your destination goals, targeted price points, and active pacing limits.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-number">2</div>
+            <div class="timeline-details">
+              <h5>Iterative Curation</h5>
+              <p>Our specialists configure custom routes selecting only highly rated properties and seasoned field guides.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-number">3</div>
+            <div class="timeline-details">
+              <h5>Monitored Execution</h5>
+              <p>You travel with structural protection frameworks, backed by localized support points at every junction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION SECTION -->
+  <section class="cta-section">
+    <div class="cta-content" data-aos="zoom-in">
+      <h2>Ready to Begin Your Next Adventure?</h2>
+      <p>Connect with our planning team today to map out completely customized global itineraries built entirely around your leisure parameters.</p>
+      <button class="cta-btn aboutPageLink" data-target="contactpage.html">Explore Destinations</button>
+    </div>
+  </section>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a href="#" class="whatsapp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 TravelX. All Rights Reserved.
+  </footer>
+
+  <!-- AOS SCRIPT -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <script>
+    // Initialize Scroll Animations
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+
+    // NAVBAR SCROLL EFFECT
+    window.addEventListener('scroll', function () {
+      const navbar = document.querySelector('.navbar');
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // MOBILE NAVIGATION TOGGLE
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // SMOOTH PAGE REDIRECTION HANDLER FOR TRAVELX LINKS
+    document.querySelectorAll('.aboutPageLink').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // Grab dynamic destination from href tag or data-target attributes
+        const destinationPage = this.getAttribute('href') || this.getAttribute('data-target') || 'about.html';
+        
+        document.body.classList.add('fade-out');
+        
+        setTimeout(function () {
+          window.location.href = destinationPage;
+        }, 400); // Matches CSS opacity transition
+      });
+    });
+
+    // Separate contact page redirection fallback
+    const contactLink = document.getElementById('contactLink');
+    if(contactLink) {
+      contactLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(function () {
+          window.location.href = 'contactpage.html';
+        }, 400);
+      });
+    }
+  </script>
+
+</body>
+</html>
